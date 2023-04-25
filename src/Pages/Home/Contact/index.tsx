@@ -9,6 +9,21 @@ import './logo192.png'
 
 export default function Contact() {
   const namee = 'abc'
+  const email = 'uyenntt71@viettel.com.vn'
+  const subject = 'Sample Mail'
+  const body = `
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Email Template</title>
+        </head>
+        <body>
+          <p>Hello, ${namee}</p>
+          <p>Please see the embedded image below:</p>
+          <img src="https://example.com/path/to/image.jpg">
+        </body>
+      </html>
+    `
   const templateParams = {
     name: 'James',
     notes: 'Check this out!',
@@ -68,12 +83,15 @@ export default function Contact() {
           </div>
           <div style={{ width: "100%" }}>
             <Button className={styles.button} onClick={sendEmail}>Send</Button>
+            {/* <Button className={styles.button} href="mailto:email@example.com?subject='Hello from Abstract!'&body='Just popped in to say hello'">Send</Button> */}
           </div>
         </Col>
         {/* <Col span={11} offset={2}>
           <Map />
         </Col> */}
       </Row>
+      <a href={`mailto:${email}?subject=${subject}&body=${body}`}>Click to Send an Email</a>
+
     </div>
   );
 }
