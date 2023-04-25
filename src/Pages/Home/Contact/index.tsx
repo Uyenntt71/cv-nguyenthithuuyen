@@ -6,6 +6,10 @@ import Map from "./Map";
 import EmailContactForm from "./EmailContactForm";
 import emailjs from '@emailjs/browser';
 import './logo192.png'
+// import htmlToFormattedText from "html-to-formatted-text";
+// @ts-ignore
+import { compile, convert } from 'html-to-text';
+
 
 export default function Contact() {
   const namee = 'abc'
@@ -54,6 +58,18 @@ export default function Contact() {
       });
   }
 
+  const convertHtmlToText = () => {
+    const options = {
+      wordwrap: 130,
+      // ...
+    };
+
+    const htmls = `a<span>&#x0020;</span>b<span>&Tab;</span>c<span>&NewLine;</span>d<span>&#10;</span>e`
+    const texts = convert(htmls, options);
+    console.log(texts);
+  }
+
+
   return (
     <div className={styles.background}>
       <Row className={styles.row}>
@@ -82,7 +98,7 @@ export default function Contact() {
             />
           </div>
           <div style={{ width: "100%" }}>
-            <Button className={styles.button} onClick={sendEmail}>Send</Button>
+            <Button className={styles.button} onClick={convertHtmlToText}>Send</Button>
             {/* <Button className={styles.button} href="mailto:email@example.com?subject='Hello from Abstract!'&body='Just popped in to say hello'">Send</Button> */}
           </div>
         </Col>
